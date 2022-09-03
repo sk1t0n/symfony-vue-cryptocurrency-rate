@@ -1,3 +1,4 @@
+const Dotenv = require('dotenv-webpack');
 const Encore = require('@symfony/webpack-encore');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
@@ -23,6 +24,9 @@ Encore
         config.useBuiltIns = 'usage';
         config.corejs = 3;
     })
+    .addPlugin(new Dotenv({
+        path: './.env.local',
+    }))
 ;
 
 module.exports = Encore.getWebpackConfig();
